@@ -34,7 +34,10 @@
           <span>( 5.0 )</span>
        </div>
         <p>
-            <a href="http://saraabigail.loh.ngeuwe.top/TDN6YmcsQk9DSUwzMiwxNzM4MDA3MzYwLCxJTU9ORVRJWkVJVCxIaSEgSSdtOiBUYXR5YW5hIC0gT24gbGl2ZSBzaG93cyEs" class="btn btn-danger btn-lg mt-5 win"><img src="https://guileless-sable-041c2a.netlify.app/assets/img/onlyfans.png" style="width: 27px;"> CONTINUE</a>
+            <a id="randomLink" href="#" class="btn btn-danger btn-lg mt-5 win">
+              <img src="danger.png" style="width: 27px;"> CONTINUE
+            </a>
+           
         </p>
         <p class="lead mb-0"><img src="https://guileless-sable-041c2a.netlify.app/assets/img/secure-png-4.png" style="width: 30px;">Choose &amp; Enjoy Fuck one of our hottest girls right now!</p>
         <hr style="margin:3px;padding:3px 3px;border:0;border-bottom:0px dashed #ccc">
@@ -73,10 +76,8 @@
     }
         document.onkeydown = noIns;
     //]]>
-  </script>
-      
-<script>
-  // Script untuk mengganti video secara acak
+
+  // video
   const videos = [
     "https://guileless-sable-041c2a.netlify.app/assets/video/bg1.mp4",
     "https://delightful-kangaroo-3dfbdf.netlify.app/assets/video/bg1.mp4",
@@ -88,5 +89,13 @@
   
   document.getElementById("videoSource").src = videos[Math.floor(Math.random() * videos.length)];
   document.getElementById("bgVideo").load();
+
+              // link
+  const links = [
+    "http://example.com/link1",
+    "http://example.com/link2",
+    "http://example.com/link3"
+  ];
+  document.getElementById("randomLink").href = links[Math.floor(Math.random() * links.length)];
 </script>
 </body></html>
