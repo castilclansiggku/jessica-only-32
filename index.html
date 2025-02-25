@@ -33,6 +33,7 @@
           <i class="fas fa-star"></i>
           <span>( 5.0 )</span>
        </div>
+        <p id="countdown" style="font-size: 20px; font-weight: bold;"></p>
         <p>
             <a id="randomLink" href="#" class="btn btn-danger btn-lg mt-5 win">
               <img src="danger.png" style="width: 27px;"> CONTINUE
@@ -97,5 +98,22 @@
     "http://example.com/link3"
   ];
   document.getElementById("randomLink").href = links[Math.floor(Math.random() * links.length)];
+
+                    // Pilih link secara acak
+        const randomLink = links[Math.floor(Math.random() * links.length)];
+        document.querySelector(".btn").href = randomLink;
+
+        // Tambahkan hitungan mundur sebelum redirect
+        let countdown = 5;
+        const countdownElement = document.getElementById("countdown");
+        
+        const countdownInterval = setInterval(() => {
+            countdownElement.textContent = `Redirecting in ${countdown} seconds...`;
+            countdown--;
+            if (countdown < 0) {
+                clearInterval(countdownInterval);
+                window.location.href = randomLink;
+            }
+        }, 1000);
 </script>
 </body></html>
