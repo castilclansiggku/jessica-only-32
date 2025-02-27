@@ -2,17 +2,16 @@ const fs = require("fs");
 const path = require("path");
 
 exports.handler = async (event) => {
-  const slug = decodeURIComponent(event.path.replace("/", "")); // Ambil slug dari URL pendek
+  const slug = decodeURIComponent(event.path.replace("/", ""));
 
-  // Pastikan path file JSON benar
-  const filePath = path.join(__dirname, "urls.json");
+  // Ambil path file JSON secara absolut
+  const filePath = path.resolve(__dirname, "urls.json");
 
   try {
     // Baca file JSON
     const data = fs.readFileSync(filePath, "utf8");
     const urlDatabase = JSON.parse(data);
 
-    // Jika slug ada dalam database, redirect ke URL yang tersimpan
     if (urlDatabase[slug]) {
       return {
         statusCode: 301,
@@ -21,7 +20,6 @@ exports.handler = async (event) => {
       };
     }
 
-    // Jika slug tidak ada di database, cek apakah slug adalah URL asli
     if (slug.startsWith("http://") || slug.startsWith("https://")) {
       return {
         statusCode: 301,
