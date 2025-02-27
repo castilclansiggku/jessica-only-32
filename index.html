@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shortlink Redirect</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Opsional -->
+    <title>Shortlink Generator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Selamat Datang di URL Shortener</h1>
-    <p>Semua link pendek akan otomatis diarahkan ke halaman utama.</p>
+    <h1>Shortlink Generator</h1>
+    <p>Masukkan URL, lalu dapatkan shortlink.</p>
+
+    <form id="shortenForm">
+        <input type="url" id="longUrl" placeholder="Masukkan URL..." required>
+        <button type="submit">Generate Shortlink</button>
+    </form>
+
+    <p id="shortlinkResult"></p>
+
+    <script src="script.js"></script>
 </body>
 </html>
