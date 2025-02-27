@@ -3,25 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
+    <title>Shortlink Redirect</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Opsional -->
 </head>
 <body>
-<h1>URL Shortener</h1>
-<input type="text" id="url" placeholder="Masukkan URL">
-<button onclick="shortenUrl()">Shorten</button>
-<p id="result"></p>
-
-<script>
-async function shortenUrl() {
-    const url = document.getElementById('url').value;
-    const res = await fetch('/.netlify/functions/shorten', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url })
-    });
-    const data = await res.json();
-    document.getElementById('result').innerHTML = `<a href="${data.shortUrl}" target="_blank">${data.shortUrl}</a>`;
-}
-</script>
+    <h1>Selamat Datang di URL Shortener</h1>
+    <p>Semua link pendek akan otomatis diarahkan ke halaman utama.</p>
 </body>
 </html>
