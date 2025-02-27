@@ -1,10 +1,22 @@
 const fs = require("fs");
+const path = require("path");
 
 exports.handler = async (event) => {
   const slug = decodeURIComponent(event.path.replace("/", "")); // Ambil slug dari URL pendek
 
-  // Baca file JSON untuk melihat apakah slug ada dalam database
-  const data = fs.readFileSync(__dirname + "/urls.json", "utf8");
+  // Pastikan path file JSON benar
+  const filePath = path.resolve(__dirname, "urls.json");
+
+  // Cek apakah file ada sebelum membacanya
+  if (!fs.existsSync(filePath)) {
+    return {
+      statusCode: 500,
+      body: "Error: urls.json not found!"
+    };
+  }
+
+  // Baca file JSON
+  const data = fs.readFileSync(filePath, "utf8");
   const urlDatabase = JSON.parse(data);
 
   // Jika slug ada dalam database, redirect ke URL yang tersimpan
