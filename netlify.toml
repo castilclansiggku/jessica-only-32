@@ -1,4 +1,13 @@
 [build]
+  functions = "functions"
+  publish = "/"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/redirect"
+  status = 200
+  
+[build]
   command = "echo 'Build complete!'"  # Bisa kosong, Netlify hanya perlu sesuatu di sini
   functions = "functions"
 
@@ -13,3 +22,10 @@
 [functions]
   node_bundler = "esbuild"
   included_files = ["functions/urls.json"]
+
+[build]
+  command = "echo 'Build complete!'"  # Tidak ada build, hanya untuk memaksa deploy
+  functions = "functions"
+
+[functions]
+  included_files = ["functions/urls.json"]  # Pastikan Netlify menyertakan JSON saat build
