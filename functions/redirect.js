@@ -1,11 +1,11 @@
-const urls = {
-  "iejwrc": "https://google.com", // Gantilah dengan database URL pendek yang kamu buat
+const urlDatabase = {
+  "iejwrc": "https://google.com",
   "abc123": "https://youtube.com"
 };
 
 exports.handler = async (event) => {
-  const slug = event.path.replace("/", ""); // Ambil slug dari URL pendek
-  const destination = urls[slug]; // Cek apakah slug ada di database
+  const path = event.path.replace("/", ""); // Ambil slug dari URL pendek
+  const destination = urlDatabase[path]; // Cek apakah slug ada di database
 
   if (destination) {
     return {
