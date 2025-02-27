@@ -1,15 +1,15 @@
-const fs = require("fs");
+const fs = require("fs").promises;
 const path = require("path");
 
 exports.handler = async (event) => {
   const slug = decodeURIComponent(event.path.replace("/", ""));
 
-  // Ambil path file JSON secara absolut
-  const filePath = path.resolve(__dirname, "urls.json");
+  // Path file JSON
+  const filePath = path.join(__dirname, "urls.json");
 
   try {
-    // Baca file JSON
-    const data = fs.readFileSync(filePath, "utf8");
+    // Baca file JSON dengan async
+    const data = await fs.readFile(filePath, "utf8");
     const urlDatabase = JSON.parse(data);
 
     if (urlDatabase[slug]) {
