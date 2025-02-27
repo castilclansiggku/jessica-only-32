@@ -8,7 +8,7 @@ exports.handler = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      shortUrl: `https://your-site.netlify.app/${slug}`
+      shortUrl: `https://usalink.netlify.app/${slug}`
     })
   };
 };
