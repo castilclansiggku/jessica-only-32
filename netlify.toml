@@ -36,3 +36,7 @@
 
 [functions]
   included_files = ["functions/urls.json"]  # Pastikan Netlify menyertakan file JSON
+  
+[build]
+  command = "echo 'Build complete!'"  # Memaksa deploy ulang
+  functions = "functions"
