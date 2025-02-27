@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+</head>
+<body>
+<h2>URL Shortener</h2>
+<input type="text" id="url" placeholder="Masukkan URL">
+<button onclick="shortenUrl()">Shorten</button>
+<p id="result"></p>
+
+<script>
+async function shortenUrl() {
+    const url = document.getElementById("url").value;
+    const response = await fetch("https://api.shrtco.de/v2/shorten?url=" + url);
+    const data = await response.json();
+    document.getElementById("result").innerHTML = `<a href="${data.result.full_short_link}" target="_blank">${data.result.full_short_link}</a>`;
+}
+</script>
+</body>
+</html>
