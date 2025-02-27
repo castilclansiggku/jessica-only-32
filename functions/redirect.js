@@ -1,33 +1,41 @@
-const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
 
-const DEFAULT_URL = "https://example.com"; // URL utama jika slug tidak cocok
+const filePath = path.join(__dirname, "urls.json");
 
 exports.handler = async (event) => {
-  const slug = decodeURIComponent(event.path.replace("/", ""));
+    // Handle Redirect dari Shortlink
+    if (event.httpMethod === "GET") {
+        const id = event.queryStringParameters.id;
+        const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-  // Contoh daftar URL asli yang ingin didukung (bisa diambil dari mana saja)
-  const originalUrls = [
-    "https://google.com",
-    "https://github.com",
-    "https://netlify.com"
-  ];
-
-  // Cek apakah slug cocok dengan hash URL asli
-  for (const url of originalUrls) {
-    const hash = crypto.createHash("md5").update(url).digest("hex").slice(0, 6);
-    if (hash === slug) {
-      return {
-        statusCode: 301,
-        headers: { Location: url },
-        body: `Redirecting to ${url}...`,
-      };
+        if (data[id]) {
+            return {
+                statusCode: 301,
+                headers: { "Location": data[id] },
+                body: "Redirecting..."
+            };
+        } else {
+            return {
+                statusCode: 404,
+                body: "Shortlink tidak ditemukan."
+            };
+        }
     }
-  }
 
-  // Jika tidak cocok, redirect ke DEFAULT_URL
-  return {
-    statusCode: 301,
-    headers: { Location: DEFAULT_URL },
-    body: `Redirecting to ${DEFAULT_URL}...`,
-  };
+    // Handle Simpan Shortlink
+    if (event.httpMethod === "POST") {
+        const body = JSON.parse(event.body);
+        const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
+        data[body.id] = body.url;
+        fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: "Shortlink berhasil disimpan!" })
+        };
+    }
+
+    return { statusCode: 405, body: "Method Not Allowed" };
 };
