@@ -23,7 +23,7 @@
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    width: 800px;
+    width: 100%;
     max-width: 100%;
 }
 .hrIWzu {
@@ -99,6 +99,9 @@ label {
     border-bottom: 2px dotted rgb(170, 170, 170);
     cursor: pointer;
     transition: 0.2s;
+}
+.goIZWx:hover {
+    opacity: 0.5;
 }
 .error-message {
     color: #e53935;
@@ -256,7 +259,7 @@ button.shortenDelete {
 	
 <div class="hrIWzu">
        <div class="form-viewURL">
-    <h2 class="goIZWx" id="shortenedURL"></h2><button color="blue" type="" class="kuJkTB"><span class="isvg loaded Button__Icon-sc-17vhu3z-1 hQyUbc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><div xmlns="" id="divScriptsUsed___BR8tYArF" style="display: none"><script xmlns="" id="globalVarsDetection___BR8tYArF" src="moz-extension://f2520e3c-54f6-4e52-9d50-4700e299a53c/js/wrs_env.js"></svg></script></div></span>Copy</button>
+    <h2 onclick="copyText()" class="goIZWx" id="shortenedURL"></h2><button id="copyButton" onclick="copyText()" color="blue" type="" class="kuJkTB"><span class="isvg loaded Button__Icon-sc-17vhu3z-1 hQyUbc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><div xmlns="" id="divScriptsUsed___BR8tYArF" style="display: none"><script xmlns="" id="globalVarsDetection___BR8tYArF" src="moz-extension://f2520e3c-54f6-4e52-9d50-4700e299a53c/js/wrs_env.js"></svg></script></div></span>Copy</button>
         </div>
         </div>
 		
@@ -305,6 +308,16 @@ function customURL() {
         otherElements[i].style.display = "flex";
     }
 }
+</script>
+<script>
+    function copyText() {
+        const text = document.getElementById("shortenedURL").innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Teks telah disalin: " + text);
+        }).catch(err => {
+            console.error("Gagal menyalin teks", err);
+        });
+    }
 </script>
 </body>
 </html>
