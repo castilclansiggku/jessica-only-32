@@ -16,8 +16,24 @@ const database = firebase.database(app);
 
 // Function to shorten URL
 function shortenURL() {
-    console.log("Tombol diklik");
     const urlInput = document.getElementById("urlInput").value;
+    const errorMessage = document.getElementById("errorMessage");
+
+    // Validasi input URL
+    if (!urlInput) {
+        errorMessage.textContent = "URL tidak boleh kosong!";
+        return;
+    }
+
+    // Cek apakah URL valid menggunakan regex
+    const urlPattern = /^(https?:\/\/)?([a-z0-9]+\.)?[a-z0-9]+\.[a-z]{2,6}(\/[a-z0-9#]+\/?)*$/i;
+    if (!urlPattern.test(urlInput)) {
+        errorMessage.textContent = "URL tidak valid! Pastikan format URL benar.";
+        return;
+    }
+
+    // Jika validasi berhasil, lanjutkan untuk shorten URL
+    errorMessage.textContent = "";  // Kosongkan pesan kesalahan
     const shortId = generateShortId();
     
     // Save the URL to Firebase with the generated shortId
