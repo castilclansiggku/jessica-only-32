@@ -72,32 +72,64 @@ button {
     align-items: center;
     cursor: pointer;
 }
+.dtQgtQ svg {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    margin-top: 2px;
+    fill: rgb(170, 170, 170);
+    transition: 0.2sease-out;
+}
+
+
+
+
+
 
 .form-group {
-    position: absolute;
-    display: block;
-    left: 4%;
-    top: 100px;
-    width: 27%;
-    background-color: lightblue;
-    padding: 10px;
+    /* position: absolute; */
+    /* display: block; */
+    /* left: 4%; */
+    /* top: 100px; */
+    /* width: 27%; */
+    /* background-color: lightblue; */
+    /* padding: 10px; */
+}
+input[type="url"], input[type="text"] {
+    /* width: 100%; */
+    /* padding: 12px; */
+    /* border: 1px solid #ddd; */
+    /* border-radius: 4px; */
+    /* font-size: 1rem; */
+    /* margin-bottom: 10px; */
+    /* box-sizing: border-box; */
+}
+.form-group {
+    /* margin-bottom: 20px; */
+    /* text-align: left; */
+}
+label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    /* display: block; */
+    margin-bottom: 8px;
 }
 .form-customId {
-    position: absolute;
-    display: block;
-    left: 36%;
-    top: 100px;
-    width: 27%;
-    background-color: lightblue;
-    padding: 10px;
+    /* position: absolute; */
+    /* display: block; */
+    /* left: 36%; */
+    /* top: 100px; */
+    /* width: 27%; */
+    /* background-color: lightblue; */
+    /* padding: 10px; */
 }
 .form-deleteShortId {
-    position: absolute;
-    display: block;
-    left: 67%;
-    top: 100px;
-    background-color: lightblue;
-    padding: 10px;
+    /* position: absolute; */
+    /* display: block; */
+    /* left: 67%; */
+    /* top: 100px; */
+    /* background-color: lightblue; */
+    /* padding: 10px; */
 }
 .form-viewURL {
     position: relative;
@@ -111,6 +143,8 @@ button {
 </style>
 <div class="container">
 
+    <h1>URL Shortener</h1>
+	
 <div  class="Shortener__ResultWrapper-tldfd6-1 hrIWzu">
        <div class="form-viewURL">
     <p id="shortenedURL"></p>
@@ -118,26 +152,25 @@ button {
         </div>
 		
 <div id="shortenerform" class="ShortenerForm">
-    <h1>URL Shortener</h1>
 	
         <div class="form-group">
     <label for="urlInput">Masukkan URL Asli:</label>
     <input class="jPNsbM" type="url" id="urlInput" placeholder="Contoh: https://google.com" required>
     <p id="errorMessage" class="error-message"></p>
-    <button onclick="shortenURL()">Shorten</button>
+    <button onclick="shortenURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
         </div>
 
         <div class="form-customId">
     <label for="urlInput">Masukkan URL Custom:</label>
     <input class="jPNsbM" type="text" id="customId" placeholder="Masukkan custom short ID" >
-    <button onclick="shortenCustomURL()">Shorten URL</button>
+    <button onclick="shortenCustomURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
         </div>
 
         <div class="form-deleteShortId">
     <label for="urlInput">Hapus URL Custom:</label>
 <input class="jPNsbM" type="text" id="deleteShortId" placeholder="Masukkan Short ID untuk dihapus" >
 <p id="deleteStatus" class="deleteStatus"></p>
-<button onclick="deleteURL()">Hapus URL</button>
+<button onclick="deleteURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
         </div>
 
 	</div>
