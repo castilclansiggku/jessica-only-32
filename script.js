@@ -35,28 +35,4 @@ function generateShortId() {
     return Math.random().toString(36).substring(2, 8); // Generate random short ID
 }
 
-window.onload = function() {
-    // Ambil shortId dari URL
-    const shortId = window.location.pathname.split("/")[1]; // Mengambil 4q2fub dari /4q2fub
-    
-    if (shortId) {
-        // Ambil URL asli dari Firebase berdasarkan shortId
-        firebase.database().ref('urls/' + shortId).once('value').then(function(snapshot) {
-            const originalUrl = snapshot.val() ? snapshot.val().originalUrl : null;
-            
-            if (originalUrl) {
-                // Jika URL ditemukan, lakukan redirect
-                window.location.href = originalUrl;
-            } else {
-                // Jika shortId tidak ditemukan, tampilkan halaman error
-                document.body.innerHTML = "<h1>Page Not Found</h1>";
-            }
-        }).catch(function(error) {
-            console.log("Error fetching data: " + error);
-            document.body.innerHTML = "<h1>Error fetching URL</h1>";
-        });
-    } else {
-        // Jika shortId tidak ada di URL, tampilkan halaman error
-        document.body.innerHTML = "<h1>Page Not Found</h1>";
-    }
-};
+
