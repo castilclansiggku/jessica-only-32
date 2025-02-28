@@ -32,15 +32,15 @@
                 window.location.href = originalUrl;
             } else {
                 // Jika shortId tidak ditemukan, tampilkan halaman error
-                document.body.innerHTML = "<h1>Page Not Found</h1>";
+                document.body.innerHTML = "<h1><a href="index.html">Page Not Found</a></h1>";
             }
         }).catch(function(error) {
             console.log("Error fetching data: " + error);
-            document.body.innerHTML = "<h1>Error fetching URL</h1>";
+            document.body.innerHTML = "<h1><a href="index.html">Error fetching URL</a></h1>";
         });
     } else {
         // Jika shortId tidak ada di URL, tampilkan halaman error
-        document.body.innerHTML = "<h1>Page Not Found</h1>";
+        document.body.innerHTML = "<h1><a href="index.html">Page Not Found</a></h1>";
     }
 };
    </script> 
