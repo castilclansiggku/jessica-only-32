@@ -82,56 +82,22 @@ button {
     fill: rgb(170, 170, 170);
     transition: 0.2sease-out;
 }
-
-
-
-
-
-
 .form-group {
-    /* position: absolute; */
-    /* display: block; */
-    /* left: 4%; */
-    /* top: 100px; */
-    /* width: 27%; */
-    /* background-color: lightblue; */
-    /* padding: 10px; */
-}
-input[type="url"], input[type="text"] {
-    /* width: 100%; */
-    /* padding: 12px; */
-    /* border: 1px solid #ddd; */
-    /* border-radius: 4px; */
-    /* font-size: 1rem; */
-    /* margin-bottom: 10px; */
-    /* box-sizing: border-box; */
-}
-.form-group {
-    /* margin-bottom: 20px; */
-    /* text-align: left; */
+    position: relative;
+    display: flex
+;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 800px;
+    max-width: 100%;
 }
 label {
     font-size: 1.1rem;
     font-weight: bold;
     /* display: block; */
     margin-bottom: 8px;
-}
-.form-customId {
-    /* position: absolute; */
-    /* display: block; */
-    /* left: 36%; */
-    /* top: 100px; */
-    /* width: 27%; */
-    /* background-color: lightblue; */
-    /* padding: 10px; */
-}
-.form-deleteShortId {
-    /* position: absolute; */
-    /* display: block; */
-    /* left: 67%; */
-    /* top: 100px; */
-    /* background-color: lightblue; */
-    /* padding: 10px; */
 }
 .form-viewURL {
     position: relative;
@@ -141,6 +107,20 @@ label {
     background-color: lightblue;
     padding: 10px;
     text-align: center;
+}
+button.shortenURL {
+}
+input#customId {
+    display: none;
+}
+button.shortenCustomURL {
+    display: none;
+}
+input#deleteShortId {
+    display: none;
+}
+button.shortenDelete {
+    display: none;
 }
 </style>
 <div class="container">
