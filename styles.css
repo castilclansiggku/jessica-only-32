@@ -56,15 +56,6 @@ label {
     margin-bottom: 8px;
 }
 
-input[type="url"], input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
 
 input[type="url"]:focus, input[type="text"]:focus {
     outline: none;
