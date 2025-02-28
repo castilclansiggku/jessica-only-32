@@ -17,17 +17,22 @@
         </div>
 
         <div class="form-customId">
+    <label for="urlInput">Masukkan URL Custom:</label>
     <input type="text" id="customId" placeholder="Masukkan custom short ID" />
     <button onclick="shortenCustomURL()">Shorten URL</button>
-    <p id="shortenedURL"></p>
         </div>
 
         <div class="form-deleteShortId">
+    <label for="urlInput">Hapus URL Custom:</label>
 <input type="text" id="deleteShortId" placeholder="Masukkan Short ID untuk dihapus" />
+<p id="deleteStatus" class="deleteStatus"></p>
 <button onclick="deleteURL()">Hapus URL</button>
-<p id="deleteStatus"></p>
         </div>
 
+       <div class="form-viewURL">
+    <p id="shortenedURL"></p>
+        </div>
+	
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
