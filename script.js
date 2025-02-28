@@ -1,24 +1,28 @@
-document.getElementById("shortenForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    databaseURL: "YOUR_DATABASE_URL",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
 
-    const longUrl = document.getElementById("longUrl").value;
-    const randomKey = Math.random().toString(36).substring(7); // Membuat ID acak
-    const shortUrl = window.location.origin + "/" + randomKey;
+const app = firebase.initializeApp(firebaseConfig);
+const database = firebase.database(app);
 
-    // Simpan ke Netlify Functions (JSON file)
-    const response = await fetch("/.netlify/functions/redirect", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: randomKey, url: longUrl })
+function shortenURL() {
+    const urlInput = document.getElementById("urlInput").value;
+    const shortId = generateShortId();
+    const shortUrl = `https://usalink.netlify.app/${shortId}`;
+
+    firebase.database().ref('urls/' + shortId).set({
+        originalUrl: urlInput
     });
 
-    if (response.ok) {
-        document.getElementById("shortlinkResult").innerHTML = 
-            `Shortlink Anda: <a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
-    } else {
-        document.getElementById("shortlinkResult").innerHTML = 
-            `<span style="color: red;">Gagal membuat shortlink.</span>`;
-    }
+    document.getElementById("shortenedURL").textContent = shortUrl;
+}
 
-    document.getElementById("longUrl").value = "";
-});
+function generateShortId() {
+    return Math.random().toString(36).substring(2, 8); // Generate a random short ID
+}
