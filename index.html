@@ -139,6 +139,15 @@ label {
     display: flex
 ;
 }
+.bPFVwp {
+    display: flex
+;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 24px 16px;
+}
 .bPFVwp:first-child {
     margin-left: 0px;
 }
@@ -210,12 +219,12 @@ button.shortenDelete {
     <script>
 	function customURL() {  
    var x = document.getElementsByClassName('shortenURL');
-  if (x.style.display === 'none') {
-    x.style.display = 'flex';
-  } else {
+  if (x.style.display === 'flex') {
     x.style.display = 'none';
+  } else {
+    x.style.display = 'flex';
   }
-  document.getElementsByClassName("shortenURL").style.display = "flex";
+  document.getElementsByClassName("shortenURL").style.display = "none";
 }
 	</script>
 </body>
