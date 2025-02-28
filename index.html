@@ -7,6 +7,44 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<style>
+  .container {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    background-color: lightgray;
+  }
+
+  .form-group {
+    position: absolute;
+    left: 50px;  /* Posisikan ke samping */
+    top: 100px;  /* Posisikan ke bawah */
+    background-color: lightblue;
+    padding: 10px;
+  }
+  .form-customId {
+    position: absolute;
+    left: 50px;  /* Posisikan ke samping */
+    top: 100px;  /* Posisikan ke bawah */
+    background-color: lightblue;
+    padding: 10px;
+  }
+  .form-deleteShortId {
+    position: absolute;
+    left: 50px;  /* Posisikan ke samping */
+    top: 100px;  /* Posisikan ke bawah */
+    background-color: lightblue;
+    padding: 10px;
+  }
+  .form-viewURL {
+    position: absolute;
+    left: 50px;  /* Posisikan ke samping */
+    top: 100px;  /* Posisikan ke bawah */
+    background-color: lightblue;
+    padding: 10px;
+  }
+</style>
+<div class="container">
     <h1>URL Shortener</h1>
 	
         <div class="form-group">
@@ -33,6 +71,8 @@
     <p id="shortenedURL"></p>
         </div>
 	
+        </div>
+		
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
