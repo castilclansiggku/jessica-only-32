@@ -252,6 +252,20 @@ input#deleteShortId {
 button.shortenDelete {
     display: none;
 }
+    #customAlert {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: center;
+        z-index: 1000;
+    }
 </style>
 <div class="container">
 
@@ -267,17 +281,18 @@ button.shortenDelete {
 	
         <div class="form-group">	
     <p id="errorMessage" class="error-message"></p>
-    <input class="jPNsbM" type="url" id="urlInput" placeholder="Contoh: https://google.com" required>
+    <input class="inputshortenrandomURL jPNsbM" type="url" id="urlInput" placeholder="Contoh: https://google.com" required>
     <button class="shortenURL" onclick="shortenURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
     <input class="inputshortenCustomURL jPNsbM" type="text" id="customId" placeholder="Masukkan custom short ID" >
     <button class="shortenCustomURL" onclick="shortenCustomURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
 	<p id="deleteStatus" class="deleteStatus"></p>
-	<input class="jPNsbM" type="text" id="deleteShortId" placeholder="Masukkan Short ID untuk dihapus" >
+	<input class="inputdeleteURL jPNsbM" type="text" id="deleteShortId" placeholder="Masukkan Short ID untuk dihapus" >
 	<button class="shortenDelete" onclick="deleteURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
 	<div class="dmOdYf">
 	<div class="ZGSuZ">
+	<div onclick="rabdomURL()" class="bPFVwp"><span id="randomurlCheckbox" class="kFrojj">Random URL</span></div>
 	<div onclick="customURL()" class="bPFVwp"><span id="customurlCheckbox" class="kFrojj">Set custom URL</span></div>
-	<div class="bPFVwp"><span id="fbpixelCheckbox" class="kFrojj">Delete Url</span></div>
+	<div class="bPFVwp" onclick="deletesURL()"><span id="deleteurlCheckbox" class="kFrojj">Delete Url</span></div>
 	</div>
 	</div>
         </div>
@@ -290,13 +305,40 @@ button.shortenDelete {
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="script.js"></script>
 <script>
-function customURL() {  
-    // Menyembunyikan elemen dengan class "shortenURL"
-    var shortenElements = document.getElementsByClassName("shortenURL");
+function rabdomURL() {  
+    // Menampilkan elemen dengan class "inputshortenrandomURL"
+    var shortenElements = document.getElementsByClassName("inputshortenrandomURL");
     for (var i = 0; i < shortenElements.length; i++) {
-        shortenElements[i].style.display = "none";
+        shortenElements[i].style.display = "flex";
     }
 
+    // Menampilkan elemen dengan class "shortenURL"
+    var otherElements = document.getElementsByClassName("shortenURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "flex";
+    }
+    // Menyembunyikan elemen dengan class "inputshortenCustomUR"
+    var otherElements = document.getElementsByClassName("inputshortenCustomURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "none";
+    }
+    // Menyembunyikan elemen dengan class "shortenCustomURL"
+    var otherElements = document.getElementsByClassName("shortenCustomURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "none";
+    }
+    // Menyembunyikan elemen dengan class "inputdeleteURL"
+    var otherElements = document.getElementsByClassName("inputdeleteURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "none";
+    }
+    // Menyembunyikan elemen dengan class "shortenDelete"
+    var otherElements = document.getElementsByClassName("shortenDelete");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "none";
+    }
+}
+function customURL() {  
     // Menampilkan elemen dengan class "inputshortenCustomURL"
     var otherElements = document.getElementsByClassName("inputshortenCustomURL");
     for (var i = 0; i < otherElements.length; i++) {
@@ -307,17 +349,75 @@ function customURL() {
     for (var i = 0; i < otherElements.length; i++) {
         otherElements[i].style.display = "flex";
     }
+    // Menyembunyikan elemen dengan class "shortenURL"
+    var shortenElements = document.getElementsByClassName("shortenURL");
+    for (var i = 0; i < shortenElements.length; i++) {
+        shortenElements[i].style.display = "none";
+    }
+    // Menyembunyikan elemen dengan class "inputdeleteURL"
+    var otherElements = document.getElementsByClassName("inputdeleteURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "none";
+    }
+    // Menyembunyikan elemen dengan class "shortenDelete"
+    var otherElements = document.getElementsByClassName("shortenDelete");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "none";
+    }
+}
+function deletesURL() {  
+    // Menyembunyikan elemen dengan class "inputshortenrandomURL"
+    var shortenElements = document.getElementsByClassName("inputshortenrandomURL");
+    for (var i = 0; i < shortenElements.length; i++) {
+        shortenElements[i].style.display = "none";
+    }
+
+    // Menyembunyikan elemen dengan class "shortenURL"
+    var otherElements = document.getElementsByClassName("shortenURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "none";
+    }
+    // Menyembunyikan elemen dengan class "inputshortenCustomUR"
+    var otherElements = document.getElementsByClassName("inputshortenCustomURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "none";
+    }
+    // Menyembunyikan elemen dengan class "shortenCustomURL"
+    var otherElements = document.getElementsByClassName("shortenCustomURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "none";
+    }
+    // Menampilkan elemen dengan class "inputdeleteURL"
+    var otherElements = document.getElementsByClassName("inputdeleteURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "flex";
+    }
+    // Menampilkan elemen dengan class "shortenDelete"
+    var otherElements = document.getElementsByClassName("shortenDelete");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "flex";
+    }
 }
 </script>
 <script>
     function copyText() {
         const text = document.getElementById("shortenedURL").innerText;
         navigator.clipboard.writeText(text).then(() => {
-            alert("Teks telah disalin: " + text);
+            showCustomAlert("Teks telah disalin: " + text);
         }).catch(err => {
-            console.error("Gagal menyalin teks", err);
+            showCustomAlert("Gagal menyalin teks.");
         });
     }
+
+    function showCustomAlert(message) {
+        const alertBox = document.getElementById("customAlert");
+        alertBox.innerText = message;
+        alertBox.style.display = "block";
+        setTimeout(() => {
+            alertBox.style.display = "none";
+        }, 2000);
+    }
 </script>
+<div id="customAlert">Teks telah disalin!</div>
 </body>
 </html>
