@@ -1,22 +1,18 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shortlink Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>URL Shortener</title>
 </head>
 <body>
-    <h1>Shortlink Generator</h1>
-    <p>Masukkan URL, lalu dapatkan shortlink.</p>
+    <h1>URL Shortener</h1>
+    <input type="text" id="urlInput" placeholder="Masukkan URL panjang">
+    <button onclick="shortenURL()">Shorten</button>
+    <p id="shortenedURL"></p>
 
-    <form id="shortenForm">
-        <input type="url" id="longUrl" placeholder="Masukkan URL..." required>
-        <button type="submit">Generate Shortlink</button>
-    </form>
-
-    <p id="shortlinkResult"></p>
-
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
