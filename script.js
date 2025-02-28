@@ -21,20 +21,19 @@ function shortenURL() {
 
     // Validasi input URL
     if (!urlInput) {
-        errorMessage.textContent = "URL tidak boleh kosong!";
+        showAlert("URL tidak boleh kosong!", "error");
         return;
     }
 
-    // Cek apakah URL valid menggunakan regex
-// Regex untuk memvalidasi URL secara umum
-const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,6}(\/[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]*)?$/i;
+    // Regex untuk memvalidasi URL secara umum
+    const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,6}(\/[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]*)?$/i;
     if (!urlPattern.test(urlInput)) {
-        errorMessage.textContent = "URL tidak valid! Pastikan format URL benar.";
+        showAlert("URL tidak valid! Pastikan format URL benar.", "error");
         return;
     }
 
     // Jika validasi berhasil, lanjutkan untuk shorten URL
-    errorMessage.textContent = "";  // Kosongkan pesan kesalahan
+    showAlert("URL berhasil diproses!", "success");
     const shortId = generateShortId();
     
     // Save the URL to Firebase with the generated shortId
@@ -46,6 +45,35 @@ const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,6}(\/[a-zA-Z0-9\-._~:
     const shortUrl = `https://usalink.netlify.app/${shortId}`;
     document.getElementById("shortenedURL").textContent = shortUrl;
 }
+
+// Fungsi untuk menampilkan pesan peringatan yang akan auto-hide
+function showAlert(message, type) {
+    const errorMessage = document.getElementById("errorMessage");
+    errorMessage.textContent = message;
+
+    // Terapkan warna berbeda untuk pesan error & success
+    if (type === "error") {
+        errorMessage.style.backgroundColor = "#ff4c4c"; // Merah untuk error
+    } else {
+        errorMessage.style.backgroundColor = "#4CAF50"; // Hijau untuk sukses
+    }
+
+    // Tampilkan pesan dengan efek fade-in
+    errorMessage.style.display = "block";
+    errorMessage.style.opacity = "1";
+
+    // Hapus animasi sebelumnya jika ada
+    clearTimeout(errorMessage.hideTimeout);
+
+    // Auto-hide setelah 3 detik
+    errorMessage.hideTimeout = setTimeout(() => {
+        errorMessage.style.opacity = "0";
+        setTimeout(() => {
+            errorMessage.style.display = "none";
+        }, 1000);
+    }, 3000);
+}
+
 
 // Function to generate random short ID
 function generateShortId() {
