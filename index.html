@@ -108,6 +108,54 @@ label {
     padding: 10px;
     text-align: center;
 }
+.error-message {
+    color: #e53935;
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    position: absolute;
+    top: 10pc;
+}
+.deleteStatus {
+    color: #e53935;
+    font-weight: bold;
+    margin-top: 10px;
+    position: absolute;
+    top: 10pc;
+}
+.dmOdYf {
+    position: absolute;
+    top: 74px;
+    left: 0px;
+    display: flex
+;
+    flex-direction: column;
+    align-self: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    z-index: 2;
+}
+.ZGSuZ {
+    display: flex
+;
+}
+.bPFVwp:first-child {
+    margin-left: 0px;
+}
+.bPFVwp:last-child {
+    margin-right: 0px;
+}
+.kFrojj {
+    position: relative;
+    display: flex
+;
+    -webkit-box-align: center;
+    align-items: center;
+    font-weight: normal;
+    color: rgb(102, 102, 102);
+    transition: color 0.3sease -out;
+    cursor: pointer;
+}
 button.shortenURL {
 }
 input#customId {
@@ -135,9 +183,7 @@ button.shortenDelete {
 		
 <div id="shortenerform" class="ShortenerForm">
 	
-        <div class="form-group">
-    <label for="urlInput">Masukkan URL Asli:</label>
-	
+        <div class="form-group">	
     <p id="errorMessage" class="error-message"></p>
     <input class="jPNsbM" type="url" id="urlInput" placeholder="Contoh: https://google.com" required>
     <button class="shortenURL" onclick="shortenURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
@@ -146,7 +192,12 @@ button.shortenDelete {
 	<p id="deleteStatus" class="deleteStatus"></p>
 	<input class="jPNsbM" type="text" id="deleteShortId" placeholder="Masukkan Short ID untuk dihapus" >
 	<button class="shortenDelete" onclick="deleteURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
-	
+	<div class="dmOdYf">
+	<div class="ZGSuZ">
+	<div onclick="customURL()" class="bPFVwp"><span id="customurlCheckbox" class="kFrojj">Set custom URL</span></div>
+	<div class="bPFVwp"><span id="fbpixelCheckbox" class="kFrojj">Delete Url</span></div>
+	</div>
+	</div>
         </div>
 
 
@@ -155,7 +206,17 @@ button.shortenDelete {
 		
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
     <script src="script.js"></script>
+    <script>
+	function customURL() {  
+   var x = document.getElementsByClassName('shortenURL');
+  if (x.style.display === 'none') {
+    x.style.display = 'flex';
+  } else {
+    x.style.display = 'none';
+  }
+  document.getElementsByClassName("shortenURL").style.display = "flex";
+}
+	</script>
 </body>
 </html>
