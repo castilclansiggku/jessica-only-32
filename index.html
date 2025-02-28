@@ -14,7 +14,12 @@
     <input type="text" id="customId" placeholder="Masukkan custom short ID" />
     <button onclick="shortenCustomURL()">Shorten URL</button>
     <p id="shortenedURL"></p>
-    
+
+    <!-- Input untuk memasukkan shortId -->
+<input type="text" id="deleteShortId" placeholder="Masukkan Short ID untuk dihapus" />
+<button onclick="deleteURL()">Hapus URL</button>
+<p id="deleteStatus"></p>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
