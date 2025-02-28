@@ -16,6 +16,7 @@ const database = firebase.database(app);
 
 // Function to shorten URL
 function shortenURL() {
+    console.log("Tombol diklik");
     const urlInput = document.getElementById("urlInput").value;
     const shortId = generateShortId();
     
