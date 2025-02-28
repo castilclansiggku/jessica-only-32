@@ -76,6 +76,7 @@ function shortenCustomURL() {
 
 function deleteURL() {
     const shortIdToDelete = document.getElementById("deleteShortId").value;
+    const deleteStatus = document.getElementById("deleteStatus");
 
     if (shortIdToDelete) {
         const confirmDelete = confirm(`Apakah Anda yakin ingin menghapus URL dengan shortId: ${shortIdToDelete}?`);
@@ -84,13 +85,36 @@ function deleteURL() {
             // Menghapus URL dari Firebase
             firebase.database().ref('urls/' + shortIdToDelete).remove()
             .then(function() {
-                document.getElementById("deleteStatus").textContent = `URL dengan shortId ${shortIdToDelete} berhasil dihapus.`;
+                deleteStatus.textContent = `URL dengan shortId ${shortIdToDelete} berhasil dihapus.`;
+                showAndHideText();
             })
             .catch(function(error) {
-                document.getElementById("deleteStatus").textContent = "Terjadi kesalahan: " + error.message;
+                deleteStatus.textContent = "Terjadi kesalahan: " + error.message;
+                showAndHideText();
             });
         }
     } else {
-        document.getElementById("deleteStatus").textContent = "Silakan masukkan shortId yang valid.";
+        deleteStatus.textContent = "Silakan masukkan shortId yang valid.";
+        showAndHideText();
     }
 }
+
+function showAndHideText() {
+    const textElement = document.getElementById("deleteStatus");
+
+    // Tampilkan kembali teks jika ada peringatan baru
+    textElement.style.display = "block";  
+    textElement.style.opacity = "1";  
+
+    // Hapus animasi sebelumnya agar bisa muncul lagi dengan mulus
+    clearTimeout(textElement.hideTimeout); 
+
+    // Auto-hide setelah 3 detik
+    textElement.hideTimeout = setTimeout(() => {
+        textElement.style.opacity = "0"; 
+        setTimeout(() => {
+            textElement.style.display = "none"; 
+        }, 1000);
+    }, 3000);
+}
+
