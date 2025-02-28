@@ -26,7 +26,8 @@ function shortenURL() {
     }
 
     // Cek apakah URL valid menggunakan regex
-    const urlPattern = /^(https?:\/\/)?([a-z0-9]+\.)?[a-z0-9]+\.[a-z]{2,6}(\/[a-z0-9#]+\/?)*$/i;
+// Regex untuk memvalidasi URL secara umum
+const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,6}(\/[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]*)?$/i;
     if (!urlPattern.test(urlInput)) {
         errorMessage.textContent = "URL tidak valid! Pastikan format URL benar.";
         return;
