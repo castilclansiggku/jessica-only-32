@@ -71,6 +71,8 @@ button {
     -webkit-box-align: center;
     align-items: center;
     cursor: pointer;
+	background: none;
+    border: none;
 }
 .dtQgtQ svg {
     width: 28px;
@@ -155,23 +157,18 @@ label {
 	
         <div class="form-group">
     <label for="urlInput">Masukkan URL Asli:</label>
-    <input class="jPNsbM" type="url" id="urlInput" placeholder="Contoh: https://google.com" required>
+	
     <p id="errorMessage" class="error-message"></p>
-    <button onclick="shortenURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
-        </div>
-
-        <div class="form-customId">
-    <label for="urlInput">Masukkan URL Custom:</label>
+    <input class="jPNsbM" type="url" id="urlInput" placeholder="Contoh: https://google.com" required>
+    <button class="shortenURL" onclick="shortenURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
     <input class="jPNsbM" type="text" id="customId" placeholder="Masukkan custom short ID" >
-    <button onclick="shortenCustomURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
+    <button class="shortenCustomURL" onclick="shortenCustomURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
+	<p id="deleteStatus" class="deleteStatus"></p>
+	<input class="jPNsbM" type="text" id="deleteShortId" placeholder="Masukkan Short ID untuk dihapus" >
+	<button class="shortenDelete" onclick="deleteURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
+	
         </div>
 
-        <div class="form-deleteShortId">
-    <label for="urlInput">Hapus URL Custom:</label>
-<input class="jPNsbM" type="text" id="deleteShortId" placeholder="Masukkan Short ID untuk dihapus" >
-<p id="deleteStatus" class="deleteStatus"></p>
-<button onclick="deleteURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
-        </div>
 
 	</div>
         </div>
