@@ -34,7 +34,7 @@ function shortenURL() {
 function generateShortId() {
     return Math.random().toString(36).substring(2, 8); // Generate random short ID
 }
-const shortId = window.location.pathname.substring(1);
+const shortId = window.location.href.split('/').pop();
 firebase.database().ref('urls/' + shortId).once('value').then(function(snapshot) {
     const originalUrl = snapshot.val()?.originalUrl;
     if (originalUrl) {
