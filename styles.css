@@ -44,18 +44,6 @@ h1 {
 }
 
 /* Form Styling */
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-label {
-    font-size: 1.1rem;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-}
-
 
 input[type="url"]:focus, input[type="text"]:focus {
     outline: none;
