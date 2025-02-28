@@ -35,3 +35,20 @@ function generateShortId() {
     return Math.random().toString(36).substring(2, 8); // Generate random short ID
 }
 
+window.onload = function() {
+    const shortId = window.location.pathname.split("/")[1]; // Mengambil shortId dari URL
+    
+    // Ambil URL asli dari Firebase berdasarkan shortId
+    firebase.database().ref('urls/' + shortId).once('value').then(function(snapshot) {
+        const originalUrl = snapshot.val().originalUrl;
+        if (originalUrl) {
+            // Redirect ke URL asli
+            window.location.href = originalUrl;
+        } else {
+            // Jika tidak ditemukan, tampilkan halaman 404 atau error
+            document.body.innerHTML = "<h1>Page Not Found</h1>";
+        }
+    }).catch(function(error) {
+        console.log("Error fetching data: " + error);
+    });
+}
