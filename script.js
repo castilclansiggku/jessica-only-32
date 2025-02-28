@@ -51,13 +51,6 @@ function showAlert(message, type) {
     const errorMessage = document.getElementById("errorMessage");
     errorMessage.textContent = message;
 
-    // Terapkan warna berbeda untuk pesan error & success
-    if (type === "error") {
-        errorMessage.style.backgroundColor = "#ff4c4c"; // Merah untuk error
-    } else {
-        errorMessage.style.backgroundColor = "#4CAF50"; // Hijau untuk sukses
-    }
-
     // Tampilkan pesan dengan efek fade-in
     errorMessage.style.display = "block";
     errorMessage.style.opacity = "1";
