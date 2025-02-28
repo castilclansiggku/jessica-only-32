@@ -34,14 +34,4 @@ function shortenURL() {
 function generateShortId() {
     return Math.random().toString(36).substring(2, 8); // Generate random short ID
 }
-const shortId = window.location.href.split('/').pop();
-firebase.database().ref('urls/' + shortId).once('value').then(function(snapshot) {
-    const originalUrl = snapshot.val()?.originalUrl;
-    if (originalUrl) {
-        window.location.href = originalUrl;  // Redirect ke URL asli
-    } else {
-        window.location.href = 'https://usalink.netlify.app/';  // Redirect default jika tidak ditemukan
-    }
-}).catch(function(error) {
-    console.error('Error redirecting:', error);
-});
+
