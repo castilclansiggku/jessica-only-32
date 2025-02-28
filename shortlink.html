@@ -104,13 +104,15 @@ label {
 .goIZWx:hover {
     opacity: 0.5;
 }
-.error-message {
-    color: #e53935;
+#errorMessage {
+    display: none; /* Awalnya disembunyikan */
+    background: #ff4c4c; /* Warna merah untuk error */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
     font-weight: bold;
-    margin-top: 5px;
-    font-size: 0.9rem;
-    position: absolute;
-    top: 10pc;
+    transition: opacity 1s ease-in-out;
 }
 #deleteStatus {
     display: none; /* Awalnya disembunyikan */
