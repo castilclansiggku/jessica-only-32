@@ -35,4 +35,25 @@ function generateShortId() {
     return Math.random().toString(36).substring(2, 8); // Generate random short ID
 }
 
+function shortenCustomURL() {
+    const urlInput = document.getElementById("urlInput").value;
+    const customId = document.getElementById("customId").value;
+    
+    // Periksa jika customId sudah ada di Firebase
+    firebase.database().ref('urls/' + customId).once('value').then(function(snapshot) {
+        if (snapshot.exists()) {
+            // ID sudah digunakan
+            alert("Short ID sudah digunakan, silakan pilih ID lain.");
+        } else {
+            // Simpan URL ke Firebase dengan customId
+            firebase.database().ref('urls/' + customId).set({
+                originalUrl: urlInput
+            });
+
+            // Tampilkan short URL
+            const shortUrl = `https://usalink.netlify.app/${customId}`;
+            document.getElementById("shortenedURL").textContent = shortUrl;
+        }
+    });
+}
 
