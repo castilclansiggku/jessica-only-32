@@ -8,10 +8,13 @@
 <body>
     <h1>URL Shortener</h1>
     <input type="text" id="urlInput" placeholder="Masukkan URL panjang">
-    <input type="text" id="customId" placeholder="Masukkan custom short ID" />
     <button onclick="shortenURL()">Shorten</button>
     <p id="shortenedURL"></p>
 
+    <input type="text" id="customId" placeholder="Masukkan custom short ID" />
+    <button onclick="shortenCustomURL()">Shorten URL</button>
+    <p id="shortenedURL"></p>
+    
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
