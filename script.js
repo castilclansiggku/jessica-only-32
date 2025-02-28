@@ -57,3 +57,23 @@ function shortenCustomURL() {
     });
 }
 
+function deleteURL() {
+    const shortIdToDelete = document.getElementById("deleteShortId").value;
+
+    if (shortIdToDelete) {
+        const confirmDelete = confirm(`Apakah Anda yakin ingin menghapus URL dengan shortId: ${shortIdToDelete}?`);
+        
+        if (confirmDelete) {
+            // Menghapus URL dari Firebase
+            firebase.database().ref('urls/' + shortIdToDelete).remove()
+            .then(function() {
+                document.getElementById("deleteStatus").textContent = `URL dengan shortId ${shortIdToDelete} berhasil dihapus.`;
+            })
+            .catch(function(error) {
+                document.getElementById("deleteStatus").textContent = "Terjadi kesalahan: " + error.message;
+            });
+        }
+    } else {
+        document.getElementById("deleteStatus").textContent = "Silakan masukkan shortId yang valid.";
+    }
+}
