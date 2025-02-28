@@ -11,6 +11,14 @@ body {
     color: #333;
 }
 
+/* Gaya untuk pesan kesalahan */
+.error-message {
+    color: #e53935;
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
 /* Container for the content */
 .container {
     background-color: #fff;
