@@ -196,7 +196,7 @@ button.shortenDelete {
     <p id="errorMessage" class="error-message"></p>
     <input class="jPNsbM" type="url" id="urlInput" placeholder="Contoh: https://google.com" required>
     <button class="shortenURL" onclick="shortenURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
-    <input class="jPNsbM" type="text" id="customId" placeholder="Masukkan custom short ID" >
+    <input class="inputshortenCustomURL jPNsbM" type="text" id="customId" placeholder="Masukkan custom short ID" >
     <button class="shortenCustomURL" onclick="shortenCustomURL()"><span class="isvg loaded ShortenerInput__Icon-sc-1i2rfiz-2 dtQgtQ"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="#aaa"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></span></button>
 	<p id="deleteStatus" class="deleteStatus"></p>
 	<input class="jPNsbM" type="text" id="deleteShortId" placeholder="Masukkan Short ID untuk dihapus" >
@@ -216,12 +216,25 @@ button.shortenDelete {
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="script.js"></script>
-    <script>
-	function customURL() {  
-   var x = document.getElementsByClassName('.shortenURL');
+<script>
+function customURL() {  
+    // Menyembunyikan elemen dengan class "shortenURL"
+    var shortenElements = document.getElementsByClassName("shortenURL");
+    for (var i = 0; i < shortenElements.length; i++) {
+        shortenElements[i].style.display = "none";
+    }
 
-  document.getElementsByClassName(".shortenURL").style.display = "none";
+    // Menampilkan elemen dengan class "inputshortenCustomURL"
+    var otherElements = document.getElementsByClassName("inputshortenCustomURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "flex";
+    }
+    // Menampilkan elemen dengan class "shortenCustomURL"
+    var otherElements = document.getElementsByClassName("shortenCustomURL");
+    for (var i = 0; i < otherElements.length; i++) {
+        otherElements[i].style.display = "flex";
+    }
 }
-	</script>
+</script>
 </body>
 </html>
